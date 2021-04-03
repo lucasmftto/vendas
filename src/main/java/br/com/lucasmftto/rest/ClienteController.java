@@ -1,9 +1,12 @@
 package br.com.lucasmftto.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,28 +23,34 @@ import br.com.lucasmftto.model.repository.ClienteRepositoty;
 
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 
 	@Autowired
-	private ClienteRepositoty repositoty;
+	private ClienteRepositoty repository;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente salvar(@RequestBody @Valid Cliente cliente) {
-		return repositoty.save(cliente);
+		return repository.save(cliente);
 	}
 
 	@GetMapping("{id}")
 	public Cliente findById(@PathVariable Integer id) {
-		return repositoty.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+	}
+	
+	@GetMapping
+	public List<Cliente> findAll(){
+		return repository.findAll();
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Integer id) {
-		repositoty.findById(id)
+		repository.findById(id)
 			.map( cliente -> {
-				repositoty.delete(cliente);
+				repository.delete(cliente);
 				return Void.TYPE;
 			})
 			
@@ -51,10 +60,10 @@ public class ClienteController {
 	@PutMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void update(@PathVariable Integer id, @Valid @RequestBody Cliente newCliente) {
-		repositoty.findById(id)
+		repository.findById(id)
 		.map( cliente -> {
 			newCliente.setId(cliente.getId());
-			repositoty.save(newCliente);
+			repository.save(newCliente);
 			return Void.TYPE;
 		})
 		

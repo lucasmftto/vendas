@@ -1,7 +1,9 @@
 .project
 .settings
 target/classes/
-target
+target/
+target/*
+/target/classes/*
 bin/
 .classpath
 
