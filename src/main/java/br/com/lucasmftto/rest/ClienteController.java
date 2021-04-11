@@ -23,7 +23,7 @@ import br.com.lucasmftto.model.repository.ClienteRepositoty;
 
 @RestController
 @RequestMapping("/api/clientes")
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 
 	@Autowired
