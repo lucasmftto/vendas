@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,7 +27,6 @@ import br.com.lucasmftto.util.BigDecimalConverter;
 
 @RestController
 @RequestMapping("/api/servicos-prestados")
-@CrossOrigin("http://localhost:4200")
 public class ServicoPrestadoController {
 	
 	@Autowired
@@ -39,7 +40,7 @@ public class ServicoPrestadoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ServicoPrestado salvar(@RequestBody ServicoPrestadoDTO dto) {
+	public ServicoPrestado salvar(@RequestBody @Valid ServicoPrestadoDTO dto) {
 		ServicoPrestado servicoPrestado = new ServicoPrestado();
 		LocalDate data = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		
