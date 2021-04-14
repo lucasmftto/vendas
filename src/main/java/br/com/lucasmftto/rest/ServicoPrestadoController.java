@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.lucasmftto.model.entity.Cliente;
 import br.com.lucasmftto.model.entity.ServicoPrestado;
-import br.com.lucasmftto.model.repository.ClienteRepositoty;
+import br.com.lucasmftto.model.repository.ClienteRepository;
 import br.com.lucasmftto.model.repository.ServicoPrestadoRepository;
 import br.com.lucasmftto.rest.dto.ServicoPrestadoDTO;
 import br.com.lucasmftto.util.BigDecimalConverter;
@@ -30,7 +30,7 @@ import br.com.lucasmftto.util.BigDecimalConverter;
 public class ServicoPrestadoController {
 	
 	@Autowired
-	private ClienteRepositoty clienteRepositoty;
+	private ClienteRepository clienteRepositoty;
 	
 	@Autowired
  	private ServicoPrestadoRepository servicoPrestadoRepository;

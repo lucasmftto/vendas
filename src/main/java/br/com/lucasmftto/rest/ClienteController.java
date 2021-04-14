@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.lucasmftto.model.entity.Cliente;
-import br.com.lucasmftto.model.repository.ClienteRepositoty;
+import br.com.lucasmftto.model.repository.ClienteRepository;
 
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
 	@Autowired
-	private ClienteRepositoty repository;
+	private ClienteRepository repository;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
