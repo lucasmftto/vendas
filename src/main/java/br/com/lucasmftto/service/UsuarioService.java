@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import br.com.lucasmftto.Exceptions.UsuarioCadastradoException;
 import br.com.lucasmftto.model.entity.Usuario;
 import br.com.lucasmftto.model.repository.UsuarioRepository;
 
@@ -15,6 +16,14 @@ public class UsuarioService implements UserDetailsService{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	public Usuario salvar(Usuario usuario) {
+		boolean exists = usuarioRepository.existsByUsername(usuario.getUsername()); 
+		if(exists) {
+			throw new UsuarioCadastradoException(usuario.getUsername());
+		}
+		return usuarioRepository.save(usuario);
+	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
