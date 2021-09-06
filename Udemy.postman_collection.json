@@ -1,0 +1,199 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Udemy",
+		"_postman_id": "81d19ace-1b6a-4ba0-4e91-2165f805bc59",
+		"description": "Cursos\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Incluir Cliente",
+			"request": {
+				"url": "http://localhost:8080/api/clientes/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer UgTqaDeZtZaIhQQWesKxpQ4Ztbg",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\" : \"lucas\",\n\t\"cpf\" : \"40028146883\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Cliente",
+			"request": {
+				"url": "http://localhost:8080/api/clientes/12",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cliente",
+			"request": {
+				"url": "http://localhost:8080/api/clientes/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Cliente",
+			"request": {
+				"url": "http://localhost:8080/api/clientes/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \n    \"nome\": \"Lucao\",\n    \"cpf\": \"40028146883\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir Servico",
+			"request": {
+				"url": "http://localhost:8080/api/servicos-prestados",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\" : \"Formatar PC2\",\n\t\"preco\": \"50,00\",\n\t\"data\": \"01/03/2021\",\n\t\"idCliente\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Servico",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/servicos-prestados?mes=3&nome=l",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicos-prestados"
+					],
+					"query": [
+						{
+							"key": "mes",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "nome",
+							"value": "l",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir Usuario",
+			"request": {
+				"url": "http://localhost:8080/api/usuarios/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"username\": \"Carol\",\n\t\t\"password\": \"senha123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "token",
+			"request": {
+				"url": "http://localhost:8080/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic bXktYW5ndWxhci1hcHA6QDMyMQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "lu",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
